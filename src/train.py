@@ -37,8 +37,9 @@ def train_model():
         'train': transforms.Compose([
             transforms.Resize((224, 224)),
             transforms.RandomHorizontalFlip(),
-            transforms.RandomRotation(15),
-            transforms.ColorJitter(brightness=0.1, contrast=0.1),
+            transforms.RandomVerticalFlip(), 
+            transforms.RandomRotation(20),   
+            transforms.RandomAffine(degrees=0, translate=(0.1, 0.1)), 
             transforms.ToTensor(),
             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ]),
@@ -59,7 +60,8 @@ def train_model():
 
     # 5. Inicializar Modelo, Pérdida y Optimizador
     model = get_model(num_classes=3).to(device)
-    criterion = nn.CrossEntropyLoss() 
+    weights = torch.tensor([1.0, 4.0, 6.0]).to(device)
+    criterion = nn.CrossEntropyLoss(weight=weights) 
     optimizer = optim.Adam(model.parameters(), lr=0.0001) 
 
     # 6. Bucle de Entrenamiento
