@@ -23,9 +23,9 @@ class MIASDataset(Dataset):
 
     def _apply_clahe(self, img):
         """Mejora del contraste médico."""
-        # Normalizar a 8 bits
+        # normalizar a 8 bits
         img_8u = cv2.normalize(img, None, 0, 255, cv2.NORM_MINMAX).astype(np.uint8)
-        # Aplicar CLAHE
+        # aplicar CLAHE
         clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
         return clahe.apply(img_8u)
 
@@ -52,8 +52,6 @@ class MIASDataset(Dataset):
         image = self._apply_clahe(image)
         
         # 5. Convertir a RGB (3 canales)
-        # IMPORTANTE: Los modelos de Transfer Learning (ResNet, etc.) esperan 3 canales
-        # aunque la imagen sea en blanco y negro.
         image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
         
         # 6. Convertir a objeto PIL para que las transforms de PyTorch funcionen correctamente

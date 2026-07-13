@@ -22,12 +22,8 @@ def get_model(num_classes=3, feature_extract=False):
         for param in model.parameters():
             param.requires_grad = False
 
-    # 3. Modificar la "Cabeza" (Head) del modelo
-    # El final de ResNet50 es una capa lineal llamada 'fc'
     num_ftrs = model.fc.in_features
     
-    # Redefinimos la capa final. 
-    # Añadimos Dropout para evitar Overfitting debido al tamaño pequeño de MIAS
     model.fc = nn.Sequential(
         nn.Linear(num_ftrs, 512),
         nn.ReLU(),
@@ -38,7 +34,7 @@ def get_model(num_classes=3, feature_extract=False):
     return model
 
 if __name__ == "__main__":
-    # Prueba rápida de la arquitectura
+
     net = get_model(num_classes=3)
     print(net)
     print("\nModelo cargado exitosamente.")
