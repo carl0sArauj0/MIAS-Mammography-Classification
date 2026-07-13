@@ -22,3 +22,8 @@ scikit-learn==1.4.1.post1
 # Jupyter (para desarrollo en VS Code)
 ipykernel
 notebook
+
+# Para NPU
+torch==2.3.0
+torchvision==0.18.0
+intel-extension-for-pytorch==2.3.0
