@@ -65,7 +65,7 @@ def train_model():
     optimizer = optim.Adam(model.parameters(), lr=0.0001) 
 
     # 6. Bucle de Entrenamiento
-    num_epochs = 45
+    num_epochs = 40
     history = {'train_loss': [], 'val_loss': [], 'val_acc': []}
     best_val_loss = float('inf')
 
