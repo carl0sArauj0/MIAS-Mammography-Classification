@@ -113,13 +113,14 @@ def train_model():
             print("--- Modelo guardado ---")
 
     # Guardar CSV de test para el script de evaluación final
-    test_df.to_csv('../data/processed/test_split.csv', index=False)
+    val_df.to_csv('../data/processed/test_split.csv', index=False)
     print("Entrenamiento completado.")
     return history
 
 if __name__ == '__main__':
     # Crear carpeta de resultados si no existe
     os.makedirs('../results/models', exist_ok=True)
+    os.makedirs('../results/plots', exist_ok=True)
     os.makedirs('../data/processed', exist_ok=True)
     
     stats = train_model()
