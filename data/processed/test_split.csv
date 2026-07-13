@@ -1,0 +1,7 @@
+file_name,tissue_type,class,severity,target
+mdb095,F,ASYM,M,2
+mdb091,F,CIRC,B,1
+mdb012,F,CIRC,B,1
+mdb030,G,MISC,B,1
+mdb006,F,NORM,N,0
+mdb148,F,SPIC,M,2
