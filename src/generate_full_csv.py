@@ -2,15 +2,12 @@ import pandas as pd
 import os
 
 def generate_mias_csv():
-    # 1. Definir rutas
+    
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(current_dir)
     output_path = os.path.join(project_root, 'data', 'info_mias.csv')
     os.makedirs(os.path.join(project_root, 'data'), exist_ok=True)
 
-    # 2. Base de datos completa (Lógica de generación para las 322 imágenes)
-    # Lista de IDs que tienen anomalías y su severidad (B=1, M=2)
-    # Formato: (ID, Severidad)
     abnormalities = {
         1:1, 2:1, 5:1, 10:1, 12:1, 13:1, 15:1, 17:1, 19:1, 21:1, 23:2, 25:1, 28:2, 30:1, 32:1, 
         58:2, 59:1, 63:1, 69:1, 72:2, 75:2, 80:1, 81:1, 83:1, 90:2, 91:1, 92:2, 95:2, 97:1, 
@@ -25,9 +22,9 @@ def generate_mias_csv():
     }
 
     rows = []
-    # MIAS tiene imágenes desde la 1 hasta la 322
+    
     for i in range(1, 323):
-        img_id = f"mdb{i:03}" # Genera mdb001, mdb002...
+        img_id = f"mdb{i:03}" 
         
         if i in abnormalities:
             target = abnormalities[i]
@@ -40,7 +37,7 @@ def generate_mias_csv():
             
         rows.append({
             'file_name': img_id,
-            'tissue_type': 'UNK', # Simplificado ya que no afecta a la clasificación
+            'tissue_type': 'UNK', 
             'class': class_name,
             'severity': severity,
             'target': target
@@ -49,7 +46,7 @@ def generate_mias_csv():
     df = pd.DataFrame(rows)
     df.to_csv(output_path, index=False)
     
-    print(f"✅ ¡PROYECTO SALVADO!")
+    print(f"✅ ¡PROYECTO GUARDADO!")
     print(f"Archivo generado en: {output_path}")
     print(f"Total de registros: {len(df)}")
     print("\nDistribución de clases:")

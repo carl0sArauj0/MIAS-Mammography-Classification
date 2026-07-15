@@ -10,7 +10,7 @@ from dataset import MIASDataset
 from model import get_model
 
 def train_model():
-    # El código detectará automáticamente NPU/GPU si PyTorch la soporta
+    
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"🚀 Iniciando entrenamiento en: {device}")
 
@@ -50,7 +50,6 @@ def train_model():
 
     model = get_model(num_classes=3).to(device)
     
-    # Pesos calculados para balancear las 322 muestras
     weights = torch.tensor([1.0, 2.5, 3.5]).to(device)
     criterion = nn.CrossEntropyLoss(weight=weights)
     optimizer = optim.Adam(model.parameters(), lr=2e-5) 
