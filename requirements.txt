@@ -3,13 +3,11 @@ numpy==1.26.4
 pandas==2.2.1
 
 # Visión Artificial e Imágenes
-# Nota: PyPNM es específica para el formato PGM de MIAS
 pypnm
 Pillow==10.2.0
 opencv-python==4.9.0.80
 
 # Deep Learning (PyTorch)
-# Estas versiones son estables para Ubuntu 22.04/24.04
 torch==2.2.1
 torchvision==0.17.1
 torchaudio==2.2.1
@@ -19,7 +17,7 @@ matplotlib==3.8.3
 seaborn==0.13.2
 scikit-learn==1.4.1.post1
 
-# Jupyter (para desarrollo en VS Code)
+# Jupyter 
 ipykernel
 notebook
 
