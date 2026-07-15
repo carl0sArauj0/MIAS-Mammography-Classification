@@ -24,7 +24,7 @@ Se utilizó una **ResNet18** pre-entrenada en ImageNet.
 
 ---
 
-## 📈 Análisis de Resultados
+## Análisis de Resultados
 
 ### Curvas de Entrenamiento
 *   **Pérdida:** Se nota una reducción constante en la pérdida de entrenamiento, llegando a niveles cercanos a 0.1. Sin embargo, la pérdida de validación tiende a subir después de las primeras 10-15 épocas, un indicador claro de **Overfitting**.
